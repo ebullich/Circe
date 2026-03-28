@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact &amp; Reservations | Circ&eacute; Restaurant</title>
+  <meta name="description" content="Reserve a table at Circ&eacute; Restaurant in Beaulieu-sur-Mer. Contact us for reservations, events, and private dining on the French Riviera.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Circ&eacute;</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html#about">The Restaurant</a></li>
+        <li><a href="menus.html">Menus</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="index.html#gallery">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#reservations" class="nav-cta">Reserve a Table</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <p class="section-label">Get in Touch</p>
+      <h1 class="section-title">Contact &amp; Reservations</h1>
+      <p class="section-subtitle">We look forward to welcoming you to Circ&eacute;</p>
+    </div>
+  </header>
+
+  <!-- Contact Info + Map -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Location</h3>
+          <p>
+            2 Avenue Fernand Dunan<br>
+            06310 Beaulieu-sur-Mer<br>
+            France
+          </p>
+          <p style="margin-top: 8px; font-style: italic;">Between Nice &amp; Monaco on the C&ocirc;te d'Azur</p>
+
+          <h3>Reservations</h3>
+          <p>
+            <a href="tel:+33422450580">+33 4 22 45 05 80</a><br>
+            <a href="mailto:reservation@circerestaurant.com">reservation@circerestaurant.com</a>
+          </p>
+
+          <h3>Events &amp; Private Hire</h3>
+          <p>
+            <a href="tel:+33789212751">+33 7 89 21 27 51</a><br>
+            <a href="mailto:events@circerestaurant.com">events@circerestaurant.com</a>
+          </p>
+
+          <h3>Opening Hours</h3>
+          <p><strong style="color: var(--color-gold);">Summer Season</strong> (28 Jun &ndash; 5 Sep)</p>
+          <p>
+            Tuesday &ndash; Friday: 7:00 PM &ndash; 12:30 AM<br>
+            Saturday &ndash; Sunday: 11:00 AM &ndash; 4:00 PM &amp; 7:00 PM &ndash; 12:30 AM
+          </p>
+          <p style="margin-top: 16px;"><strong style="color: var(--color-gold);">Off Season</strong> (8 Sep &ndash; 27 Jun)</p>
+          <p>
+            Thursday: 7:00 PM &ndash; 12:30 AM<br>
+            Friday: 6:00 PM &ndash; 12:30 AM<br>
+            Saturday: 11:00 AM &ndash; 4:00 PM &amp; 7:00 PM &ndash; 12:30 AM<br>
+            Sunday: 11:00 AM &ndash; 4:00 PM
+          </p>
+
+          <h3>Follow Us</h3>
+          <p>
+            <a href="https://www.facebook.com/circerestaurant/" target="_blank" rel="noopener">Facebook</a> &middot;
+            <a href="https://www.instagram.com/circe.restaurant/" target="_blank" rel="noopener">Instagram</a>
+          </p>
+        </div>
+        <div>
+          <div class="map-placeholder" style="min-height: 500px;">
+            <div class="placeholder-icon">&#128205;</div>
+            <p>2 Avenue Fernand Dunan<br>Beaulieu-sur-Mer, France</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservation Form -->
+  <section class="section" id="reservations" style="background: var(--color-bg-alt);">
+    <div class="container">
+      <div class="section-header centered">
+        <p class="section-label">Reserve</p>
+        <h2 class="section-title">Book a Table</h2>
+        <p class="section-subtitle">For parties of 8 or more, please contact us directly by phone or email.</p>
+      </div>
+      <div class="contact-grid">
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! Your reservation request has been received. We will confirm shortly.');">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="date">Preferred Date</label>
+              <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+              <label for="time">Preferred Time</label>
+              <select id="time" name="time" required>
+                <option value="">Select a time</option>
+                <option value="11:00">11:00 AM (Brunch)</option>
+                <option value="11:30">11:30 AM (Brunch)</option>
+                <option value="12:00">12:00 PM (Brunch)</option>
+                <option value="12:30">12:30 PM (Brunch)</option>
+                <option value="13:00">1:00 PM (Brunch)</option>
+                <option value="19:00">7:00 PM</option>
+                <option value="19:30">7:30 PM</option>
+                <option value="20:00">8:00 PM</option>
+                <option value="20:30">8:30 PM</option>
+                <option value="21:00">9:00 PM</option>
+                <option value="21:30">9:30 PM</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="guests">Number of Guests</label>
+            <select id="guests" name="guests" required>
+              <option value="">Select</option>
+              <option value="1">1 Guest</option>
+              <option value="2">2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="5">5 Guests</option>
+              <option value="6">6 Guests</option>
+              <option value="7">7 Guests</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="occasion">Occasion (Optional)</label>
+            <select id="occasion" name="occasion">
+              <option value="">Select</option>
+              <option value="birthday">Birthday</option>
+              <option value="anniversary">Anniversary</option>
+              <option value="business">Business Dinner</option>
+              <option value="date">Date Night</option>
+              <option value="celebration">Celebration</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="notes">Special Requests</label>
+            <textarea id="notes" name="notes" placeholder="Dietary requirements, seating preference, etc."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Request Reservation</button>
+        </form>
+        <div class="contact-info" style="display: flex; flex-direction: column; justify-content: center;">
+          <div style="padding: 48px; border: 1px solid rgba(201,168,76,0.15); text-align: center;">
+            <p class="section-label" style="margin-bottom: 24px;">Prefer to Call?</p>
+            <p style="font-family: var(--font-display); font-size: 2rem; color: var(--color-cream); margin-bottom: 16px;">
+              <a href="tel:+33422450580" style="color: var(--color-cream);">+33 4 22 45 05 80</a>
+            </p>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 32px;">
+              Our team is available during opening hours to assist with your reservation.
+            </p>
+            <p class="section-label" style="margin-bottom: 24px;">Or Email</p>
+            <p style="font-size: 1rem;">
+              <a href="mailto:reservation@circerestaurant.com">reservation@circerestaurant.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h2 class="footer-logo">Circ&eacute;</h2>
+          <p>Restaurant &middot; Bar &agrave; Cocktails &middot; Lounge</p>
+          <p class="footer-address">2 Avenue Fernand Dunan, 06310 Beaulieu-sur-Mer, France</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">The Restaurant</a></li>
+            <li><a href="menus.html">Menus</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Follow Us</h4>
+          <ul>
+            <li><a href="https://www.facebook.com/circerestaurant/" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://www.instagram.com/circe.restaurant/" target="_blank" rel="noopener">Instagram</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+33422450580">+33 4 22 45 05 80</a></li>
+            <li><a href="mailto:reservation@circerestaurant.com">reservation@circerestaurant.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Circ&eacute; Restaurant. All rights reserved.</p>
+        <p class="footer-legal">CIRC&Eacute; &mdash; R.C.S. Grasse 908 502 974</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
