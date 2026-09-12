@@ -127,7 +127,7 @@ export default {
         ${arche('Photographie à produire — buffet du brunch en terrasse', { classe: 'arche--haute' })}
         <h3 style="margin-top:1.75rem">Brunch</h3>
         <p style="margin-top:0.9rem;color:var(--encre-douce)">
-          Samedi et dimanche de 11h à 16h, un buffet à volonté face à la mer, entre petit-déjeuner tardif et déjeuner.
+          Samedi et dimanche de 11h à 16h, un buffet à volonté face à la mer. Trois formules, dès 69 €.
         </p>
         <p style="margin-top:1.1rem"><a class="lien" href="/brunch-beaulieu-sur-mer/">Le brunch du week-end</a></p>
       </article>

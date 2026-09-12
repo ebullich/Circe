@@ -201,8 +201,12 @@ a:hover > .metal, .metal:hover { background-position: 82% 50%; }
   color: var(--encre);
 }
 .section--clair .or, .section--clair-haut .or { color: #7A5E22; }
-.section--clair .bouton, .section--clair-haut .bouton { color: #6B5119; border-color: #B08F3F; }
-.section--clair .bouton:hover, .section--clair-haut .bouton:hover { color: var(--nuit); border-color: #8A6C2A; }
+/* Le bouton plein garde son encre sombre sur l'or : l'or foncé ci-dessous ne
+   vaut que pour les boutons au trait, posés sur le fond clair. */
+.section--clair .bouton:not(.bouton--plein),
+.section--clair-haut .bouton:not(.bouton--plein) { color: #6B5119; border-color: #B08F3F; }
+.section--clair .bouton:not(.bouton--plein):hover,
+.section--clair-haut .bouton:not(.bouton--plein):hover { color: var(--nuit); border-color: #8A6C2A; }
 .section--clair .plat__prix, .section--clair-haut .plat__prix { color: #7A5E22; }
 .section--clair .lien, .section--clair-haut .lien,
 .section--clair .prose a:not(.bouton), .section--clair-haut .prose a:not(.bouton) { color: #6B5119; }
@@ -639,6 +643,49 @@ a:hover > .metal, .metal:hover { background-position: 82% 50%; }
 .plat__nom { font-family: var(--display); font-size: var(--t-1p); line-height: 1.25; }
 .plat__prix { font-family: var(--texte); font-weight: 300; font-size: var(--t-1); letter-spacing: 0.08em; color: var(--or); white-space: nowrap; }
 .plat__desc { grid-column: 1 / -1; font-size: var(--t-1); color: var(--encre-douce); max-width: 58ch; line-height: 1.65; }
+
+/* Les formules : trois colonnes scandées par un filet d'or en tête.
+   Pas de carte, pas d'ombre, pas de coin arrondi. */
+.formules {
+  display: grid;
+  gap: clamp(2.25rem, 4vw, 3.5rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+/* Les quatre lignes sont alignées d'une colonne à l'autre : les prix doivent
+   se lire sur la même ligne, même quand une composition tient sur deux lignes. */
+@media (min-width: 52rem) {
+  .formules { grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto auto auto; }
+  .formule { grid-row: span 4; grid-template-rows: subgrid; display: grid; gap: 0; }
+}
+
+.formule { border-top: 1px solid var(--filet); padding-top: clamp(1.5rem, 3vw, 2.25rem); }
+.formule > * { align-self: start; }
+.formule__nom { font-size: var(--t-2p); line-height: 1.15; }
+.formule__compo {
+  margin-top: 0.85rem;
+  font-size: var(--t-2);
+  font-weight: 300;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  color: var(--encre-tenue);
+}
+.formule__prix {
+  margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-family: var(--display);
+  font-size: var(--t-3p);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--or);
+}
+.formule__detail {
+  margin-top: clamp(1rem, 2vw, 1.35rem);
+  font-size: var(--t-1);
+  line-height: 1.65;
+  color: var(--encre-douce);
+  max-width: 34ch;
+}
+.section--clair .formule__prix, .section--clair-haut .formule__prix { color: #7A5E22; }
 
 /* Sommaire d'une carte longue : des filets d'or, jamais des puces. */
 .sommaire {

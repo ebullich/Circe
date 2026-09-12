@@ -1,0 +1,28 @@
+{
+  "_lisezMoi": "Source unique du brunch : formules, tarifs et horaires d'affichage. Les horaires d'ouverture eux-mêmes restent dans content/horaires.json. Les tarifs partent en données structurées Offer.",
+  "maj": "2026-09-12",
+  "jours": "Tous les samedis et dimanches",
+  "formule": "Buffet à volonté",
+  "formules": [
+    {
+      "nom": "Brunch Gourmand",
+      "composition": "Buffet du chef",
+      "detail": "Le buffet complet, salé et sucré, à volonté.",
+      "prix": 69
+    },
+    {
+      "nom": "Brunch Méditerranéen",
+      "composition": "Buffet du chef et banc de l’écailler",
+      "detail": "Le buffet complet, augmenté du banc de l’écailler : huîtres, crustacés et fruits de mer.",
+      "prix": 89
+    },
+    {
+      "nom": "Brunch Signature",
+      "composition": "Buffet du chef, banc de l’écailler et champagne",
+      "detail": "Le buffet complet, le banc de l’écailler et le champagne servi tout au long du service.",
+      "prix": 129
+    }
+  ],
+  "tarifEnfant": null,
+  "_tarifEnfant": "À transmettre par le restaurant s'il existe un tarif enfant."
+}

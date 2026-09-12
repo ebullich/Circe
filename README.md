@@ -17,10 +17,11 @@ npx http-server dist -p 4321   # http://localhost:4321
 ## Où se trouve quoi
 
 ```
-content/            Les données. C'est ici que l'on modifie le site au quotidien.
+content/            Les données. C’est ici que l’on modifie le site au quotidien.
   etablissement.json  Adresse, téléphone, réservation, réseaux — source unique du NAP
   horaires.json       Horaires — source unique, alimente l'affichage et le JSON-LD
   carte.json          Les cartes (dîner, cocktails)
+  brunch.json         Les formules du brunch et leurs tarifs
 src/
   layout.js           Gabarit commun, en-tête, pied de page, données structurées
   pages/*.js          Une page = un fichier

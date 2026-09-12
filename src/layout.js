@@ -6,6 +6,7 @@ const ici = dirname(fileURLToPath(import.meta.url));
 export const etab = JSON.parse(readFileSync(join(ici, '../content/etablissement.json'), 'utf8'));
 export const horaires = JSON.parse(readFileSync(join(ici, '../content/horaires.json'), 'utf8'));
 export const cartes = JSON.parse(readFileSync(join(ici, '../content/carte.json'), 'utf8'));
+export const brunch = JSON.parse(readFileSync(join(ici, '../content/brunch.json'), 'utf8'));
 
 export const carte = (id) => cartes.cartes.find((c) => c.id === id);
 
@@ -105,6 +106,40 @@ export function menuLd(c) {
     inLanguage: 'fr-FR',
     provider: { '@id': etab.domaine + '/#restaurant' },
     hasMenuSection: c.sections.map(sectionLd)
+  };
+}
+
+/* Les formules du brunch : trois colonnes séparées par des filets, pas des cartes. */
+export function formulesHtml(formules) {
+  return `<div class="formules">
+      ${formules.map((f) => `<article class="formule">
+        <h3 class="formule__nom">${e(f.nom)}</h3>
+        <p class="formule__compo">${e(f.composition)}</p>
+        <p class="formule__prix">${e(f.prix)} €</p>
+        <p class="formule__detail">${e(f.detail)}</p>
+      </article>`).join('\n      ')}
+    </div>`;
+}
+
+/* Le brunch est un menu à part entière : Google sait lire ses tarifs. */
+export function brunchLd(b) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Menu',
+    name: `Brunch — ${etab.nomComplet}`,
+    url: etab.domaine + '/brunch-beaulieu-sur-mer/',
+    inLanguage: 'fr-FR',
+    provider: { '@id': etab.domaine + '/#restaurant' },
+    hasMenuSection: [{
+      '@type': 'MenuSection',
+      name: 'Formules du brunch',
+      hasMenuItem: b.formules.map((f) => ({
+        '@type': 'MenuItem',
+        name: f.nom,
+        description: f.composition,
+        offers: { '@type': 'Offer', price: f.prix, priceCurrency: 'EUR' }
+      }))
+    }]
   };
 }
 

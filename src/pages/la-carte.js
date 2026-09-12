@@ -43,7 +43,7 @@ export default {
       <article>
         ${arche('Photographie à produire — le buffet du brunch', { classe: 'arche--haute' })}
         <h3 style="margin-top:1.75rem">Brunch</h3>
-        <p style="margin-top:0.9rem;color:var(--encre-douce)">Buffet à volonté, samedi et dimanche de 11h à 16h.</p>
+        <p style="margin-top:0.9rem;color:var(--encre-douce)">Buffet à volonté, samedi et dimanche de 11h à 16h. Trois formules, dès 69 €.</p>
         <p style="margin-top:1.1rem"><a class="lien" href="/brunch-beaulieu-sur-mer/">Voir le brunch</a></p>
       </article>
     </div>
