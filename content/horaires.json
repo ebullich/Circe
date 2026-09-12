@@ -1,0 +1,23 @@
+{
+  "_lisezMoi": "Source unique des horaires. Alimente l'affichage du site, la page Contact et les données structurées transmises à Google. Ne saisissez les horaires nulle part ailleurs. Passez « confirme » à false pour suspendre leur publication en JSON-LD.",
+  "confirme": true,
+  "note": "Horaires communiqués par le restaurant le 12 septembre 2026.",
+  "services": [
+    {
+      "service": "Dîner",
+      "libelleJours": "Du mercredi au samedi",
+      "jours": ["Wednesday", "Thursday", "Friday", "Saturday"],
+      "ouvre": "18:00",
+      "ferme": "00:30"
+    },
+    {
+      "service": "Brunch",
+      "libelleJours": "Samedi et dimanche",
+      "jours": ["Saturday", "Sunday"],
+      "ouvre": "11:00",
+      "ferme": "16:00"
+    }
+  ],
+  "fermeture": "Fermé le lundi et le mardi",
+  "exceptions": []
+}

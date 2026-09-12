@@ -1,0 +1,11 @@
+{
+  "name": "circe-beaulieu",
+  "private": true,
+  "type": "module",
+  "description": "Site de Circé — restaurant méditerranéen à Beaulieu-sur-Mer",
+  "scripts": {
+    "build": "node build.mjs && node tools/og.mjs",
+    "dev": "node build.mjs && node --run serve",
+    "serve": "node -e \"import('node:http').then(async h=>{const{createReadStream,existsSync,statSync}=await import('node:fs');const{join,extname}=await import('node:path');const T={'.html':'text/html;charset=utf-8','.css':'text/css','.js':'text/javascript','.png':'image/png','.svg':'image/svg+xml','.xml':'application/xml','.txt':'text/plain'};h.createServer((q,r)=>{let p=join('dist',decodeURIComponent(q.url.split('?')[0]));if(existsSync(p)&&statSync(p).isDirectory())p=join(p,'index.html');if(!existsSync(p)){r.writeHead(404);return r.end('404');}r.writeHead(200,{'content-type':T[extname(p)]||'application/octet-stream'});createReadStream(p).pipe(r);}).listen(4321,()=>console.log('http://localhost:4321'))})\""
+  }
+}

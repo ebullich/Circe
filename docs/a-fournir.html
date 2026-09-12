@@ -1,0 +1,487 @@
+<title>Ce qui manque à Circé</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Jost:wght@200;300;400&display=swap">
+<style>
+  :root {
+    --nuit: #0A1620;
+    --nuit-2: #102232;
+    --or: #C9A24B;
+    --champagne: #E3C98A;
+    --ivoire: #F2ECE1;
+    --encre-douce: color-mix(in srgb, #F2ECE1 78%, transparent);
+    --encre-tenue: color-mix(in srgb, #F2ECE1 60%, transparent);
+    --filet: color-mix(in srgb, #C9A24B 34%, transparent);
+    --filet-tenu: color-mix(in srgb, #F2ECE1 14%, transparent);
+    --display: "Bodoni Moda", Didot, "Bodoni MT", "Times New Roman", serif;
+    --texte: "Jost", Futura, "Avenir Next", "Helvetica Neue", system-ui, sans-serif;
+    --courbe: cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding-block: clamp(2.5rem, 6vw, 5rem) clamp(4rem, 8vw, 7rem);
+    padding-inline: clamp(1.25rem, 4vw, 3rem);
+    background: var(--nuit);
+    color: var(--ivoire);
+    font-family: var(--texte);
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 940px; margin-inline: auto; }
+
+  h1, h2, h3 {
+    font-family: var(--display);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.018em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  h1 { font-size: clamp(2.4rem, 1.6rem + 3.4vw, 4rem); }
+  h2 { font-size: clamp(1.7rem, 1.2rem + 2.1vw, 2.6rem); }
+  h3 { font-size: clamp(1.15rem, 1rem + 0.6vw, 1.35rem); letter-spacing: -0.01em; }
+
+  .chapo {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(1.15rem, 1rem + 0.7vw, 1.45rem);
+    line-height: 1.45;
+    color: var(--encre-douce);
+    max-width: 44ch;
+    margin: clamp(1.25rem, 2.5vw, 1.75rem) 0 0;
+  }
+  p { margin: 0; }
+  .note { color: var(--encre-douce); max-width: 62ch; font-size: 0.94rem; line-height: 1.65; }
+
+  /* Avancement : un filet d'or qui se remplit. */
+  .avancement { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+  .avancement__chiffres {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--encre-tenue);
+    font-variant-numeric: tabular-nums;
+  }
+  .avancement__rail { margin-top: 0.75rem; height: 1px; background: var(--filet-tenu); }
+  .avancement__jauge {
+    height: 1px;
+    width: 0%;
+    background: linear-gradient(90deg, #A8823A, var(--champagne));
+    transition: width 420ms var(--courbe);
+  }
+
+  section { margin-top: clamp(3.5rem, 7vw, 5.5rem); }
+  .entete-section {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: 0.5rem 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--filet);
+  }
+  .compteur {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--encre-tenue);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .entete-section + .note { margin-top: 1.25rem; }
+
+  .seance { margin-top: clamp(2.25rem, 4vw, 3rem); }
+  .seance__titre {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 1rem;
+  }
+  .seance__rang {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--or);
+    white-space: nowrap;
+  }
+  .seance__moment {
+    font-size: 0.74rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--encre-tenue);
+  }
+
+  ul { list-style: none; margin: 1.25rem 0 0; padding: 0; }
+  li { border-top: 1px solid var(--filet-tenu); }
+  li:last-child { border-bottom: 1px solid var(--filet-tenu); }
+
+  .ligne {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    gap: 0.25rem 1rem;
+    padding-block: 0.95rem;
+    cursor: pointer;
+    transition: opacity 260ms var(--courbe);
+  }
+  .ligne:hover .case { border-color: var(--champagne); }
+
+  .case {
+    grid-row: 1 / span 2;
+    width: 17px; height: 17px;
+    margin-top: 0.42rem;
+    border: 1px solid var(--filet);
+    background: transparent;
+    position: relative;
+    flex: none;
+    transition: border-color 200ms var(--courbe), background 200ms var(--courbe);
+  }
+  .case::after {
+    content: "";
+    position: absolute;
+    left: 5px; top: 1px;
+    width: 5px; height: 10px;
+    border-right: 1px solid var(--nuit);
+    border-bottom: 1px solid var(--nuit);
+    transform: rotate(42deg) scale(0);
+    transition: transform 200ms var(--courbe);
+  }
+  .ligne input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .ligne input:focus-visible + .case { outline: 1px solid var(--champagne); outline-offset: 3px; }
+
+  .titre-ligne { font-size: 1rem; line-height: 1.5; }
+  .detail {
+    grid-column: 2;
+    font-size: 0.83rem;
+    line-height: 1.6;
+    color: var(--encre-tenue);
+    letter-spacing: 0.01em;
+  }
+  .etiquette {
+    grid-column: 3;
+    grid-row: 1;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--or);
+    border: 1px solid var(--filet);
+    padding: 0.2rem 0.55rem;
+    white-space: nowrap;
+    margin-top: 0.3rem;
+  }
+
+  .fait .case { background: var(--champagne); border-color: var(--champagne); }
+  .fait .case::after { transform: rotate(42deg) scale(1); }
+  .fait .titre-ligne { color: var(--encre-tenue); }
+  .fait .detail { color: color-mix(in srgb, #F2ECE1 38%, transparent); }
+  .fait .etiquette { opacity: 0.4; }
+
+  .pied {
+    margin-top: clamp(4rem, 8vw, 6rem);
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--filet-tenu);
+    font-size: 0.83rem;
+    color: var(--encre-tenue);
+  }
+  .etat-sauvegarde { margin-top: 0.6rem; font-size: 0.78rem; letter-spacing: 0.06em; }
+
+  @media (max-width: 34rem) {
+    .ligne { grid-template-columns: auto 1fr; }
+    .etiquette { grid-column: 2; grid-row: auto; justify-self: start; margin-top: 0.45rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::after { transition-duration: 0.01ms !important; }
+  }
+</style>
+
+<div class="page">
+  <header>
+    <h1>Ce qui manque</h1>
+    <p class="chapo">Tout ce qu’il reste à fournir pour mettre le site en ligne. Cochez au fur et à mesure : la liste garde vos coches.</p>
+    <div class="avancement">
+      <div class="avancement__chiffres">
+        <span id="libelle-avancement">— sur —</span>
+        <span id="libelle-bloquants"></span>
+      </div>
+      <div class="avancement__rail"><div class="avancement__jauge" id="jauge"></div></div>
+    </div>
+  </header>
+
+  <main id="sections"></main>
+
+  <footer class="pied">
+    <p>Les éléments marqués « bloquant » empêchent la mise en ligne. Le reste peut arriver après, page par page.</p>
+    <p class="etat-sauvegarde" id="etat-sauvegarde">Chargement…</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var SECTIONS = [
+    {
+      id: 'photos',
+      titre: 'Les photographies',
+      note: 'Vingt et un emplacements d’image sont réservés dans le site, auxquels s’ajoutent la vidéo du hero et un plan en bonus. Aucune photo de banque d’images n’a été utilisée : chaque emplacement attend la vôtre. Traitement commun à toutes les prises de vue — lumière chaude, contraste marqué, ombres légèrement bleutées, hautes lumières dorées. Livraison en JPEG ou TIFF, 3000 px minimum sur le grand côté, sans filtre.',
+      seances: [
+        {
+          rang: 'Séance 1',
+          titre: 'Le lieu',
+          moment: 'Heure bleue et coucher de soleil',
+          items: [
+            { id: 'ph-video', t: 'Vidéo du coucher de soleil sur la Baie des Fourmis', d: 'Depuis la terrasse, plan fixe ou très lent travelling, muette. 16:9, moins de 2 Mo après compression. C’est le premier plan du site, celui que tout le monde verra.', bloquant: true },
+            { id: 'ph-vue-1', t: 'Vue panoramique depuis la terrasse', d: 'Baie des Fourmis et Cap-Ferrat, premier plan de table dressée. Panoramique 5:2, 3000 px. Page d’accueil.' },
+            { id: 'ph-vue-2', t: 'La même vue, second cadrage', d: 'Plus large ou plus serré, pour ne pas répéter la première. Panoramique 5:2, 3000 px. Page « Le lieu ».' },
+            { id: 'ph-rotonde-soir', t: 'La Rotonde au crépuscule', d: 'L’édifice vu de l’extérieur, lumières allumées. Portrait 4:5.' },
+            { id: 'ph-rotonde-port', t: 'La Rotonde vue du port', d: 'Plan large depuis le port de plaisance, fin d’après-midi. Portrait 4:5.' },
+            { id: 'ph-jardin', t: 'Le jardin d’herbes', d: 'Détail des herbes, lumière rasante de fin de journée. Paysage 5:4.' },
+            { id: 'ph-statue', t: 'La statue de Circé', d: 'Détail, éclairage travaillé. Pas encore d’emplacement réservé, mais elle est citée dans les textes : elle mérite sa place.' }
+          ]
+        },
+        {
+          rang: 'Séance 2',
+          titre: 'La cuisine et les plats',
+          moment: 'Lumière du jour, pendant le service',
+          items: [
+            { id: 'ph-chef-portrait', t: 'Portrait de Jean Christiansen', d: 'Au travail, pas de pose. Portrait 3:4. Page « Le chef ».' },
+            { id: 'ph-chef-cuisine', t: 'Le chef en cuisine', d: 'Plan d’ambiance, la brigade au travail. Portrait 3:4. Page d’accueil.' },
+            { id: 'ph-dressage', t: 'Dressage d’un plat', d: 'Vue de trois quarts, lumière rasante, les mains dans le cadre. Portrait 3:4.' },
+            { id: 'ph-plat-carte', t: 'Un plat de la carte du dîner', d: 'Portrait 3:4. Page « La carte ».' },
+            { id: 'ph-poisson', t: 'Poisson entier grillé au feu', d: 'Entier, avant découpe. Portrait 4:5. Page « Carte du dîner ».' },
+            { id: 'ph-table-chef', t: 'Un temps de la Table du Chef', d: 'Le dressage d’une assiette du menu en cinq temps. Paysage 5:4.' }
+          ]
+        },
+        {
+          rang: 'Séance 3',
+          titre: 'Le bar',
+          moment: 'En soirée, lumières allumées',
+          items: [
+            { id: 'ph-bar', t: 'Le comptoir du bar en activité', d: 'Bouteilles et macérations visibles. Portrait 3:4. Page « La carte ».' },
+            { id: 'ph-cocktail', t: 'Un cocktail signature', d: 'Le verre fini, en situation. Portrait 3:4. Page d’accueil.' },
+            { id: 'ph-cocktail-prepa', t: 'Préparation d’un cocktail', d: 'Les mains du barman, geste en cours. Portrait 4:5. Page « Cocktails ».' }
+          ]
+        },
+        {
+          rang: 'Séance 4',
+          titre: 'Le brunch',
+          moment: 'Un samedi vers 11h30',
+          items: [
+            { id: 'ph-buffet-pano', t: 'Le buffet dressé, vue d’ensemble', d: 'Panoramique 5:2, 3000 px. En-tête de la page brunch.' },
+            { id: 'ph-buffet-portrait', t: 'Le buffet, cadrage portrait', d: 'Portrait 3:4. Page « La carte ».' },
+            { id: 'ph-buffet-terrasse', t: 'Le buffet en terrasse', d: 'Portrait 3:4. Page d’accueil.' },
+            { id: 'ph-table-brunch', t: 'Table de brunch dressée', d: 'Mer en arrière-plan, couverts et verres. Portrait 4:5.' }
+          ]
+        },
+        {
+          rang: 'Séance 5',
+          titre: 'Les réceptions',
+          moment: 'Sur un vrai événement, si possible',
+          items: [
+            { id: 'ph-reception', t: 'La terrasse dressée pour une réception', d: 'Vue d’ensemble depuis l’entrée, coucher de soleil. Panoramique 5:2, 3000 px.' },
+            { id: 'ph-mariage', t: 'La salle dressée pour un mariage', d: 'Vue d’ensemble, tables dressées, heure bleue. Portrait 3:4.' },
+            { id: 'ph-panier', t: 'Panier pique-nique bateau', d: 'Le panier ouvert, quai ou bateau en arrière-plan. Paysage 5:4.' }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'contenus',
+      titre: 'Les contenus',
+      note: 'La carte du dîner, les horaires et les formules du brunch sont déjà en ligne avec leurs prix. Voici ce qui manque encore.',
+      items: [
+        { id: 'c-cocktails', t: 'La carte des cocktails', d: 'Intitulés, compositions et prix. Ce qui est affiché aujourd’hui est un exemple de mise en page, pas votre vraie carte : c’est le seul contenu factice qui reste sur le site.', bloquant: true },
+        { id: 'c-allergenes', t: 'Les allergènes, plat par plat', d: 'Obligation légale d’affichage. À ajouter par plat dans la carte.', bloquant: true },
+        { id: 'c-vins', t: 'La carte des vins', d: 'Appellations, millésimes, tarifs. La page est prête à la recevoir.' },
+        { id: 'c-groupes', t: 'Les menus groupes', d: 'Formules, tarifs, nombre de couverts minimum.' },
+        { id: 'c-brunch-enfant', t: 'Le tarif enfant du brunch', d: 'S’il en existe un. Et la composition détaillée du buffet, plat par plat.' },
+        { id: 'c-privatisation', t: 'Les capacités de privatisation', d: 'Par espace — salle, terrasse, bar, jardin — en configuration assise et debout. Plus les formules, les budgets minimum et les équipements techniques disponibles (sonorisation, vidéoprojection, piste).' },
+        { id: 'c-programme', t: 'Le calendrier des soirées', d: 'Dates, horaires, tarifs et invités de la Table du Chef, des Candle Nights, des Dinner Shows et des DJ sets. Chaque date obtiendra sa page et son balisage événement — c’est ce qui fait apparaître un restaurant dans les résultats « événements » de Google.' },
+        { id: 'c-chef', t: 'Le parcours du chef', d: 'Maisons, distinctions, et la liste nominative des producteurs partenaires. Rien n’a été inventé sur ce point.' },
+        { id: 'c-traiteur', t: 'Les prestations traiteur', d: 'Ce que vous proposez, les délais de commande, la zone de livraison.' },
+        { id: 'c-avis', t: 'Les liens vers vos avis', d: 'Fiche Google et TripAdvisor, pour un bloc « Ils en parlent » sobre. Aucune note ne sera balisée : afficher une note que le site ne collecte pas lui-même est sanctionné par Google.' },
+        { id: 'c-presse', t: 'Les retombées presse', d: 'Articles, logos des médias, kit presse. Pour une page dédiée.' },
+        { id: 'c-anglais', t: 'La relecture des textes anglais', d: 'La carte est déjà traduite dans les fichiers. Le reste du site attend une version anglaise, à relire par un locuteur natif.' }
+      ]
+    },
+    {
+      id: 'legal',
+      titre: 'Les informations légales',
+      note: 'Obligatoires. Ce sont des données factuelles : elles seront publiées exactement telles que vous les transmettrez.',
+      items: [
+        { id: 'l-societe', t: 'Raison sociale, forme juridique, capital', d: 'Tels qu’ils figurent sur votre Kbis.', bloquant: true },
+        { id: 'l-rcs', t: 'Numéro RCS et TVA intracommunautaire', d: '', bloquant: true },
+        { id: 'l-directeur', t: 'Le directeur de la publication', d: 'La personne physique responsable du contenu du site.', bloquant: true },
+        { id: 'l-hebergeur', t: 'L’hébergeur retenu', d: 'Nom, raison sociale et adresse. À renseigner une fois l’hébergeur choisi.', bloquant: true },
+        { id: 'l-cookies', t: 'La validation de la politique de cookies', d: 'Le bandeau de consentement reste à brancher : rien ne se déposera avant votre accord.' }
+      ]
+    },
+    {
+      id: 'marque',
+      titre: 'La marque',
+      items: [
+        { id: 'm-logo', t: 'Le logo en vectoriel', d: 'SVG, AI ou EPS. Le fichier fourni est un PNG de 1600 px : utilisable à l’écran, insuffisant pour l’impression et les grands formats. À demander au graphiste d’origine.' }
+      ]
+    },
+    {
+      id: 'acces',
+      titre: 'Les accès',
+      note: 'Nécessaires le jour de la bascule. Sans eux, la mise en ligne ne peut pas se faire sans risque pour votre référencement ni pour vos e-mails.',
+      items: [
+        { id: 'a-registrar', t: 'Le registrar du domaine et les accès DNS', d: 'Chez qui circerestaurant.com est déposé, et de quoi modifier les enregistrements.', bloquant: true },
+        { id: 'a-mails', t: 'L’hébergement des e-mails', d: 'Pour ne pas couper contact@circerestaurant.com au moment du changement de DNS. C’est l’erreur la plus fréquente d’une migration.', bloquant: true },
+        { id: 'a-squarespace', t: 'Le compte Squarespace actuel', d: 'Pour récupérer le sitemap complet et la liste exacte des anciennes URL à rediriger. Une seule URL oubliée, c’est du trafic perdu.', bloquant: true },
+        { id: 'a-search-console', t: 'Google Search Console', d: 'La propriété existante doit être conservée : c’est votre historique de référencement.', bloquant: true },
+        { id: 'a-gbp', t: 'Google Business Profile', d: 'Droits de gestion de la fiche. C’est le premier levier de référencement local d’un restaurant.', bloquant: true },
+        { id: 'a-ga4', t: 'Google Analytics', d: 'Compte GA4 existant, ou création.' },
+        { id: 'a-meta', t: 'Meta Business', d: 'Pour le pixel et le suivi des conversions de vos campagnes.' },
+        { id: 'a-newsletter', t: 'L’outil de newsletter', d: 'Brevo ou un autre — dites-moi lequel est déjà en place.' },
+        { id: 'a-sevenrooms', t: 'SevenRooms', d: 'Pour intégrer le widget de réservation en fenêtre, plutôt qu’un simple lien sortant.' },
+        { id: 'a-capcadeau', t: 'Capcadeau', d: 'Pour les bons cadeaux, si vous voulez autre chose qu’un lien.' }
+      ]
+    },
+    {
+      id: 'decisions',
+      titre: 'Les décisions à prendre',
+      note: 'Rien ne bloque tant qu’elles ne sont pas tranchées, mais elles changent le travail à faire.',
+      items: [
+        { id: 'd-bookvideo', t: 'Que faire de preview.bookvideo.mc ?', d: 'Vos menus y sont hébergés aujourd’hui. C’est votre plus grosse fuite de référencement : tout le contenu le plus recherché vit sur un domaine qui n’est pas le vôtre. Contrat en cours à respecter, ou abandon au profit des pages du site ?', bloquant: true },
+        { id: 'd-panier', t: 'Que devient le panier Squarespace ?', d: 'L’URL /cart est active. Sert-elle à de la vente en ligne — traiteur, bons cadeaux ? Si oui, il faut lui trouver un remplaçant.' },
+        { id: 'd-prix-cocktails', t: 'Publier les prix des cocktails ?', d: 'Recommandé. C’est ce que les gens cherchent, et cela améliore le taux de réservation.' },
+        { id: 'd-anglais', t: 'Version anglaise au lancement, ou après ?', d: 'Votre clientèle est internationale. L’architecture est prête ; c’est une question de délai et de budget de traduction.' },
+        { id: 'd-hebergeur', t: 'Quel hébergeur ?', d: 'Vercel est le choix par défaut : gratuit à cette échelle, très rapide, déploiement automatique. À valider.' }
+      ]
+    }
+  ];
+
+  /* Mise à plat : un seul tableau d'éléments, ids stables. */
+  var TOUS = [];
+  SECTIONS.forEach(function (s) {
+    (s.items || []).forEach(function (i) { TOUS.push(i); });
+    (s.seances || []).forEach(function (se) {
+      se.items.forEach(function (i) { TOUS.push(i); });
+    });
+  });
+
+  var coche = {};
+  var docRef = null;
+
+  function echapper(t) {
+    return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function ligne(item) {
+    return '<li><label class="ligne" data-id="' + item.id + '">' +
+      '<input type="checkbox" id="case-' + item.id + '">' +
+      '<span class="case" aria-hidden="true"></span>' +
+      '<span class="titre-ligne">' + echapper(item.t) + '</span>' +
+      (item.d ? '<span class="detail">' + echapper(item.d) + '</span>' : '') +
+      (item.bloquant ? '<span class="etiquette">Bloquant</span>' : '') +
+      '</label></li>';
+  }
+
+  function construire() {
+    var html = SECTIONS.map(function (s) {
+      var n = (s.items || []).length + (s.seances || []).reduce(function (t, se) { return t + se.items.length; }, 0);
+      var corps = '<section id="s-' + s.id + '">' +
+        '<div class="entete-section"><h2>' + echapper(s.titre) + '</h2>' +
+        '<span class="compteur" id="compteur-' + s.id + '">0 / ' + n + '</span></div>' +
+        (s.note ? '<p class="note">' + echapper(s.note) + '</p>' : '');
+      if (s.items) corps += '<ul>' + s.items.map(ligne).join('') + '</ul>';
+      (s.seances || []).forEach(function (se) {
+        corps += '<div class="seance"><div class="seance__titre">' +
+          '<span class="seance__rang">' + echapper(se.rang) + '</span>' +
+          '<h3>' + echapper(se.titre) + '</h3>' +
+          '<span class="seance__moment">' + echapper(se.moment) + '</span></div>' +
+          '<ul>' + se.items.map(ligne).join('') + '</ul></div>';
+      });
+      return corps + '</section>';
+    }).join('');
+    document.getElementById('sections').innerHTML = html;
+
+    document.querySelectorAll('.ligne').forEach(function (l) {
+      l.querySelector('input').addEventListener('change', function (e) {
+        basculer(l.dataset.id, e.target.checked);
+      });
+    });
+  }
+
+  function peindre() {
+    document.querySelectorAll('.ligne').forEach(function (l) {
+      var fait = !!coche[l.dataset.id];
+      l.classList.toggle('fait', fait);
+      l.querySelector('input').checked = fait;
+    });
+
+    SECTIONS.forEach(function (s) {
+      var ids = [];
+      (s.items || []).forEach(function (i) { ids.push(i.id); });
+      (s.seances || []).forEach(function (se) { se.items.forEach(function (i) { ids.push(i.id); }); });
+      var faits = ids.filter(function (id) { return coche[id]; }).length;
+      var el = document.getElementById('compteur-' + s.id);
+      if (el) el.textContent = faits + ' / ' + ids.length;
+    });
+
+    var faits = TOUS.filter(function (i) { return coche[i.id]; }).length;
+    document.getElementById('libelle-avancement').textContent = faits + ' fournis sur ' + TOUS.length;
+    document.getElementById('jauge').style.width = (faits / TOUS.length * 100) + '%';
+
+    var bloquants = TOUS.filter(function (i) { return i.bloquant; });
+    var restants = bloquants.filter(function (i) { return !coche[i.id]; }).length;
+    document.getElementById('libelle-bloquants').textContent =
+      restants === 0 ? 'Aucun bloquant' : restants + ' bloquant' + (restants > 1 ? 's' : '') + ' restant' + (restants > 1 ? 's' : '');
+  }
+
+  function basculer(id, valeur) {
+    if (valeur) coche[id] = true; else delete coche[id];
+    peindre();
+    enregistrer();
+  }
+
+  var enAttente = null;
+  function enregistrer() {
+    if (docRef) {
+      clearTimeout(enAttente);
+      enAttente = setTimeout(function () {
+        docRef.set({ coche: coche, maj: new Date().toISOString() }).catch(function () {
+          etat('Les coches n’ont pas pu être enregistrées.');
+        });
+      }, 400);
+    } else {
+      try { localStorage.setItem('circe-a-fournir', JSON.stringify(coche)); } catch (e) { /* navigation privée */ }
+    }
+  }
+
+  function etat(texte) {
+    document.getElementById('etat-sauvegarde').textContent = texte;
+  }
+
+  construire();
+  try {
+    coche = JSON.parse(localStorage.getItem('circe-a-fournir') || '{}');
+  } catch (e) { coche = {}; }
+  peindre();
+  etat('Coches enregistrées sur cet appareil.');
+
+  /* Si la page peut écrire côté serveur, les coches deviennent partagées. */
+  if (window.claude && typeof window.claude.use === 'function') {
+    window.claude.use('db').then(function (db) {
+      if (!db) return;
+      docRef = db.doc('suivi/a-fournir');
+      docRef.onSnapshot(function (snap) {
+        coche = (snap.exists && snap.data() && snap.data().coche) || {};
+        peindre();
+        etat('Coches enregistrées et partagées avec toute l’équipe.');
+      }, function () {
+        docRef = null;
+        etat('Coches enregistrées sur cet appareil.');
+      });
+    }).catch(function () { /* on garde le stockage local */ });
+  }
+})();
+</script>
