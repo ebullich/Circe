@@ -1,0 +1,33 @@
+{
+  "_lisezMoi": "Source unique de vérité. Toute modification ici se répercute sur le site, le pied de page, les données structurées et le sitemap. Ne dupliquez jamais ces informations ailleurs.",
+  "nom": "Circé",
+  "nomComplet": "Circé Beaulieu-sur-Mer",
+  "baseline": "Restaurant méditerranéen, bar à cocktails et terrasse vue mer",
+  "domaine": "https://www.circerestaurant.com",
+  "adresse": {
+    "rue": "2 avenue Fernand Dunan",
+    "codePostal": "06310",
+    "ville": "Beaulieu-sur-Mer",
+    "region": "Alpes-Maritimes",
+    "pays": "FR",
+    "paysNom": "France"
+  },
+  "nap": "2 avenue Fernand Dunan, 06310 Beaulieu-sur-Mer",
+  "geo": { "lat": 43.7043924, "lon": 7.3322746 },
+  "telephone": { "affichage": "+33 4 22 45 05 80", "lien": "tel:+33422450580" },
+  "email": "contact@circerestaurant.com",
+  "reservation": "https://www.sevenrooms.com/reservations/circebeaulieusurmer",
+  "bonCadeau": "https://www.capcadeau.com/sas-circe",
+  "itineraire": "https://www.google.com/maps/dir/?api=1&destination=43.7043924,7.3322746",
+  "reseaux": [
+    "https://www.instagram.com/circerestaurant/",
+    "https://www.facebook.com/circerestaurant"
+  ],
+  "cuisine": ["Mediterranean", "French"],
+  "gammeDePrix": "€€€",
+  "chef": "Jean Christiansen",
+  "zonesDesservies": [
+    "Beaulieu-sur-Mer", "Saint-Jean-Cap-Ferrat", "Villefranche-sur-Mer",
+    "Èze", "Nice", "Monaco", "Menton", "Cap-d'Ail"
+  ]
+}

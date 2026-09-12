@@ -1,0 +1,12 @@
+{
+  "_lisezMoi": "Source unique des horaires. Tant que « confirme » vaut false, les horaires ne sont PAS publiés en données structurées (JSON-LD) afin de ne pas transmettre à Google une information non vérifiée. Passez « confirme » à true une fois les horaires validés par le restaurant.",
+  "confirme": false,
+  "note": "Le site actuel se contredit : l'accueil annonce « du jeudi au dimanche », la page Menus « tous les jours sauf le lundi ». À trancher avant mise en ligne.",
+  "services": [
+    { "jours": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "libelleJours": "Du mardi au dimanche", "service": "Déjeuner", "ouvre": "12:00", "ferme": "14:30" },
+    { "jours": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "libelleJours": "Du mardi au dimanche", "service": "Dîner", "ouvre": "19:00", "ferme": "23:00" },
+    { "jours": ["Saturday","Sunday"], "libelleJours": "Samedi et dimanche", "service": "Brunch", "ouvre": "11:00", "ferme": "15:00" }
+  ],
+  "fermeture": "Fermé le lundi",
+  "exceptions": []
+}
