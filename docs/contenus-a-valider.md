@@ -16,11 +16,8 @@ en ligne et de ce qui manque encore.
 Fichier : `content/horaires.json`, avec `"confirme": true`. Ces horaires alimentent
 l'affichage, la page Contact **et** les données structurées transmises à Google.
 
-> **Un point à confirmer :** le dimanche soir. La consigne reçue disait d'abord
-> « du mercredi au dimanche 18h – 00h30 », puis se corrigeait en « du mercredi au samedi ».
-> C'est la seconde version qui a été retenue : **pas de service le dimanche soir**.
-> Si le restaurant sert aussi le dimanche soir, ajouter `Sunday` au service « Dîner »
-> dans `content/horaires.json`.
+Le dimanche soir est bien fermé : confirmé par le restaurant le 12 septembre 2026.
+Le dimanche n'accueille que le brunch, de 11h à 16h.
 
 ### La carte du dîner — en ligne avec ses prix
 
@@ -91,13 +88,12 @@ publication, hébergeur. Obligatoire légalement.
 
 ## Questions ouvertes
 
-1. Le dimanche soir : service ou pas ? (voir ci-dessus)
-2. Existe-t-il un tarif enfant pour le brunch ? Le champ `tarifEnfant` de
+1. Existe-t-il un tarif enfant pour le brunch ? Le champ `tarifEnfant` de
    `content/brunch.json` attend la réponse.
-3. Le panier Squarespace `/cart` sert-il à de la vente en ligne ? Si oui, que devient-il ?
-4. Les menus hébergés sur `preview.bookvideo.mc` : contrat en cours à respecter, ou
+2. Le panier Squarespace `/cart` sert-il à de la vente en ligne ? Si oui, que devient-il ?
+3. Les menus hébergés sur `preview.bookvideo.mc` : contrat en cours à respecter, ou
    abandon complet au profit des pages HTML de ce site ? C'est aujourd'hui la principale
    fuite de référencement — tout le contenu le plus recherché échappe au domaine.
-5. Quels accès sont disponibles : registrar du domaine, DNS, Google Business Profile,
+4. Quels accès sont disponibles : registrar du domaine, DNS, Google Business Profile,
    Search Console, GA4, Meta Business, outil de newsletter ?
-6. Le logo existe-t-il en vectoriel (SVG, AI, EPS) ?
+5. Le logo existe-t-il en vectoriel (SVG, AI, EPS) ?
