@@ -1,44 +1,165 @@
 {
-  "_lisezMoi": "Source unique des cartes. IMPORTANT : les intitulés de plats ci-dessous sont des EXEMPLES de mise en page, écrits pour montrer le rendu. Ils doivent être remplacés par la carte réelle du restaurant avant mise en ligne. Les prix sont volontairement vides : ils ne seront publiés qu'une fois validés (voir docs/contenus-a-valider.md).",
-  "placeholders": true,
+  "_lisezMoi": "Source unique des cartes. Le champ « prix » accepte un nombre (affiché « 24 € ») ou un texte libre (« 80 € / 100 g », « Au cours »). Seuls les prix numériques sont transmis à Google en données structurées. Le champ « en » prépare la version anglaise : il n'est pas encore affiché.",
+  "majDiner": "2026-09-12",
   "cartes": [
     {
       "id": "diner",
       "url": "/la-carte/diner/",
       "nom": "Dîner",
-      "chapeau": "La carte du soir change avec les arrivages. Elle se lit en trois temps, et se partage volontiers.",
+      "chapeau": "Fruits de mer, poissons crus, pièces au feu de bois et grands formats à partager. La carte suit la pêche et les saisons.",
+      "reelle": true,
       "sections": [
         {
-          "nom": "Pour commencer",
-          "plats": [
-            { "nom": "Huîtres de la côte", "desc": "Au naturel, échalote et vinaigre de vin.", "prix": null },
-            { "nom": "Poulpe grillé", "desc": "Pommes de terre écrasées, olive noire, citron confit.", "prix": null },
-            { "nom": "Tomates de plein champ", "desc": "Burrata, basilic du jardin, huile d'olive de la vallée.", "prix": null },
-            { "nom": "Carpaccio de daurade", "desc": "Agrumes, fenouil cru, huile de verveine.", "prix": null }
+          "nom": "Fruits de mer",
+          "en": "Seafood",
+          "sections": [
+            {
+              "nom": "Les plateaux",
+              "en": "Seafood platters",
+              "plats": [
+                { "nom": "Plateau 2 personnes", "en": "Platter for 2", "desc": "2 huîtres Gillardeau n°3, 2 huîtres Gillardeau n°4, 4 crevettes roses, 4 langoustines, caviar de saumon.", "prix": 98 },
+                { "nom": "Plateau 4 personnes", "en": "Platter for 4", "desc": "4 huîtres Gillardeau n°3, 4 huîtres Gillardeau n°4, 8 crevettes roses, 8 langoustines, caviar de saumon.", "prix": 185 }
+              ]
+            },
+            {
+              "nom": "À la pièce",
+              "en": "By the piece",
+              "plats": [
+                { "nom": "Huîtres Gillardeau n°3", "en": "Gillardeau oysters n°3", "desc": "Quatre pièces.", "prix": 29 },
+                { "nom": "Huîtres Gillardeau n°4", "en": "Gillardeau oysters n°4", "desc": "Quatre pièces.", "prix": 24 },
+                { "nom": "Crevettes roses", "en": "Pink shrimps", "desc": "Six pièces.", "prix": 22 },
+                { "nom": "Langoustines crues", "en": "Raw langoustines", "desc": "Trois pièces.", "prix": 31 },
+                { "nom": "Carpaccio de Saint-Jacques", "en": "Scallop carpaccio", "desc": "Citronnelle, gingembre.", "prix": 27 },
+                { "nom": "Caviar Oscietra par Caspian", "en": "Oscietra caviar by Caspian", "desc": "Trente grammes.", "prix": 110 },
+                { "nom": "Caviar Oscietra par Caspian", "en": "Oscietra caviar by Caspian", "desc": "Cent grammes.", "prix": 290 }
+              ]
+            }
           ]
         },
         {
-          "nom": "La mer",
+          "nom": "Entrées",
+          "en": "Starters",
           "plats": [
-            { "nom": "Poisson entier du jour", "desc": "Grillé au feu, jus d'arête, légumes de saison. Selon la pêche.", "prix": null },
-            { "nom": "Loup en croûte de sel", "desc": "Pour deux personnes, découpé en salle.", "prix": null },
-            { "nom": "Gambas rouges", "desc": "Plancha, ail doux, bisque courte.", "prix": null }
+            { "nom": "Tiradito de thon rouge", "en": "Bluefin tuna tiradito", "desc": "Coco, verveine et grenade.", "prix": 47 },
+            { "nom": "Ceviche de denti", "en": "Denti ceviche", "desc": "Cebette, piment, artichaut poivrade et fenouil.", "prix": 36 },
+            { "nom": "Crudo de daurade royale", "en": "Sea bream crudo", "desc": "Huile d’olive bergamote, sauce ponzu.", "prix": 44 },
+            { "nom": "Carpaccio de sériole", "en": "Yellowtail carpaccio", "desc": "Au caviar, sauce huître.", "prix": 42 },
+            { "nom": "Cœur de saumon fumé maison", "en": "Heart of home-smoked salmon", "desc": "Crème passion-coriandre.", "prix": 23 },
+            { "nom": "Tataki de bœuf", "en": "Beef tataki", "desc": "Herbes, truffe et sauce ponzu.", "prix": 22 },
+            { "nom": "Terrine de foie gras de canard", "en": "Duck foie gras terrine", "desc": "Cèpes, orange, pêche.", "prix": 42 },
+            { "nom": "Burrata crémeuse aux tomates cerises", "en": "Creamy burrata with cherry tomatoes", "desc": "", "prix": 17 },
+            { "nom": "Burrata crémeuse à la truffe Aestivum", "en": "Creamy burrata with Aestivum truffle", "desc": "", "prix": 37 },
+            { "nom": "Salade d’aubergine grillée", "en": "Grilled eggplant salad", "desc": "Coriandre, pignons de pin.", "prix": 16 },
+            { "nom": "Salade grecque et feta", "en": "Greek salad with feta", "desc": "", "prix": 25 },
+            { "nom": "Croquetas de barbajuan", "en": "Barbajuan croquetas", "desc": "", "prix": 24 },
+            { "nom": "Pimientos de Padrón", "en": "Padrón peppers", "desc": "", "prix": 16 },
+            { "nom": "Artichauts poivrades frits", "en": "Fried baby artichokes", "desc": "Chips de pata negra, mayonnaise au basilic.", "prix": 25 },
+            { "nom": "Calamars frits", "en": "Fried calamari", "desc": "Mayonnaise à l’ail noir.", "prix": 24 }
           ]
         },
         {
-          "nom": "La terre",
-          "plats": [
-            { "nom": "Côte de bœuf maturée", "desc": "Pour deux personnes, pommes grenaille, béarnaise à l'estragon.", "prix": null },
-            { "nom": "Agneau de pays", "desc": "Cuisson lente, aubergine fumée, jus au romarin.", "prix": null },
-            { "nom": "Légumes du maraîcher", "desc": "Au feu de bois, condiment aux herbes du jardin.", "prix": null }
+          "nom": "Plats principaux",
+          "en": "Main courses",
+          "sections": [
+            {
+              "nom": "Viandes",
+              "en": "Meat",
+              "plats": [
+                { "nom": "Coquelet rôti au Josper", "en": "Josper-roasted baby chicken", "desc": "Piment et citron.", "prix": 34 },
+                { "nom": "Filet de bœuf épicé « Circé »", "en": "Spicy “Circé” beef tenderloin", "desc": "300 g. Piment, soja, sésame et cumin.", "prix": 54 },
+                { "nom": "Entrecôte Black Angus épaisse", "en": "Thick Black Angus rib-eye", "desc": "300 g. Au feu de bois.", "prix": 64 },
+                { "nom": "Burger de wagyu Kagoshima", "en": "Kagoshima wagyu burger", "desc": "Pickles et frites.", "prix": 49 }
+              ]
+            },
+            {
+              "nom": "Poissons",
+              "en": "Fish",
+              "plats": [
+                { "nom": "Poulpe grillé au feu de bois", "en": "Wood-grilled octopus", "desc": "", "prix": 37 },
+                { "nom": "Gambas Black Tiger grillées", "en": "Grilled Black Tiger prawns", "desc": "Cebettes.", "prix": 60 },
+                { "nom": "Black cod", "en": "Black cod", "desc": "Beurre blanc au caviar.", "prix": 69 },
+                { "nom": "Pavé de bar croustillant", "en": "Crispy sea bass fillet", "desc": "Courgettes, jus de tomate.", "prix": 38 }
+              ]
+            },
+            {
+              "nom": "À partager",
+              "en": "To share",
+              "plats": [
+                { "nom": "Côte de bœuf Black Angus extra large", "en": "Extra large Black Angus prime rib", "desc": "1,2 kg.", "prix": 198 },
+                { "nom": "Contre-filet de wagyu Kagoshima", "en": "Kagoshima wagyu striploin", "desc": "300 g.", "prix": "80 € / 100 g" },
+                { "nom": "Carré d’agneau quatre côtes", "en": "Four-rib lamb rack", "desc": "Herbes, pistache, jus réduit.", "prix": 98 },
+                { "nom": "Rouget rôti à la provençale", "en": "Roasted red mullet, Provençal style", "desc": "Sauce vierge.", "prix": 69 },
+                { "nom": "Homard bleu grillé au feu de bois", "en": "Fire-grilled blue lobster", "desc": "800 g.", "prix": 149 },
+                { "nom": "Pêche du jour", "en": "Catch of the day", "desc": "", "prix": "15 € / 100 g" },
+                { "nom": "Pêche d’exception rôtie aux herbes sèches", "en": "Exceptional catch, roasted with dry herbs", "desc": "", "prix": "Au cours" }
+              ]
+            }
           ]
         },
         {
-          "nom": "Pour finir",
+          "nom": "Pâtes et risottos",
+          "en": "Pasta and risotto",
           "plats": [
-            { "nom": "Citron de Menton", "desc": "Sablé, crème glacée au basilic.", "prix": null },
-            { "nom": "Figue rôtie", "desc": "Miel de lavande, glace au lait d'amande.", "prix": null },
-            { "nom": "Chocolat et huile d'olive", "desc": "Fleur de sel.", "prix": null }
+            { "nom": "Gnocchi au citron d’Èze et artichaut", "en": "Lemon gnocchi from Èze, artichoke", "desc": "", "prix": 24 },
+            { "nom": "Linguini « provençaou » au pistou", "en": "Provençal-style linguine with pistou", "desc": "", "prix": 24 },
+            { "nom": "Risotto aux langoustines XXL", "en": "XXL langoustine risotto", "desc": "Parfums de thym et citron.", "prix": 66 },
+            { "nom": "Risotto à la truffe Melanosporum", "en": "Black winter truffle risotto", "desc": "Tuber melanosporum.", "prix": 72 }
+          ]
+        },
+        {
+          "nom": "Accompagnements",
+          "en": "Sides",
+          "plats": [
+            { "nom": "Légumes du maraîcher", "en": "Farmer’s vegetables", "desc": "", "prix": 12 },
+            { "nom": "Haricots verts", "en": "Green beans", "desc": "", "prix": 9 },
+            { "nom": "Broccolini", "en": "Broccolini", "desc": "", "prix": 12 },
+            { "nom": "Pleurotes grillées", "en": "Grilled oyster mushrooms", "desc": "", "prix": 12 },
+            { "nom": "Patate douce au parmesan", "en": "Sweet potato with parmesan", "desc": "", "prix": 9 },
+            { "nom": "Frites au couteau maison", "en": "Homemade fresh-cut fries", "desc": "", "prix": 9 },
+            { "nom": "Purée de pommes de terre", "en": "Mashed potatoes", "desc": "", "prix": 9 },
+            { "nom": "Purée de pommes de terre à la truffe Melanosporum", "en": "Melanosporum truffle mashed potatoes", "desc": "", "prix": 29 }
+          ]
+        },
+        {
+          "nom": "En supplément",
+          "en": "With a supplement",
+          "plats": [
+            { "nom": "Truffe Melanosporum", "en": "Melanosporum truffle", "desc": "Cinq grammes.", "prix": 24 },
+            { "nom": "Caviar", "en": "Caviar", "desc": "Cinq grammes.", "prix": 24 }
+          ]
+        },
+        {
+          "nom": "Desserts",
+          "en": "Desserts",
+          "plats": [
+            { "nom": "Crème brûlée à la pistache de Sicile", "en": "Crème brûlée with Sicilian pistachio", "desc": "", "prix": 15 },
+            { "nom": "Crème tonka et noisettes torréfiées", "en": "Tonka cream and roasted hazelnuts", "desc": "", "prix": 12 },
+            { "nom": "L’assiette de glaces et sorbets, trois parfums", "en": "Three-flavour ice cream and sorbet plate", "desc": "", "prix": 12 },
+            { "nom": "La crêpe Suzette devant vous", "en": "Crêpe Suzette prepared in front of you", "desc": "", "prix": 27 }
+          ]
+        },
+        {
+          "nom": "Desserts à partager",
+          "en": "Desserts to share",
+          "plats": [
+            { "nom": "Moelleux mi-cuit au chocolat noir", "en": "Half-baked dark chocolate cake", "desc": "", "prix": 32 },
+            { "nom": "Baba au limoncello d’Èze", "en": "Èze limoncello baba", "desc": "", "prix": 32 },
+            { "nom": "Cheesecake marmelade de fruits", "en": "Fruit marmalade cheesecake", "desc": "", "prix": 32 },
+            { "nom": "Assiette de fruits frais coupés", "en": "Fresh-cut fruit plate", "desc": "", "prix": 26 },
+            { "nom": "Notre iconique plateau de desserts", "en": "Our iconic dessert platter", "desc": "Desserts et fruits frais coupés.", "prix": 85 }
+          ]
+        },
+        {
+          "nom": "Fruits givrés — Maison Sorbetti",
+          "en": "Frozen fruit — Maison Sorbetti",
+          "plats": [
+            { "nom": "Fruit de la passion", "en": "Passion fruit", "desc": "", "prix": 16 },
+            { "nom": "Abricot à la verveine", "en": "Apricot with verbena", "desc": "", "prix": 16 },
+            { "nom": "Banane", "en": "Banana", "desc": "", "prix": 16 },
+            { "nom": "Ananas", "en": "Pineapple", "desc": "À partager.", "prix": 40 },
+            { "nom": "Coco", "en": "Coconut", "desc": "À partager.", "prix": 40 },
+            { "nom": "Cabosse de cacao", "en": "Cocoa pod", "desc": "À partager.", "prix": 40 },
+            { "nom": "La grande assiette de fruits givrés", "en": "The large frozen fruit plate", "desc": "À partager.", "prix": 165 }
           ]
         }
       ]
@@ -48,6 +169,7 @@
       "url": "/la-carte/cocktails/",
       "nom": "Cocktails",
       "chapeau": "Les philtres de Circé : macérations maison, herbes du jardin, amers. Le bar se visite pour lui-même.",
+      "reelle": false,
       "sections": [
         {
           "nom": "Les philtres",
@@ -63,14 +185,14 @@
           "plats": [
             { "nom": "Negroni de la maison", "desc": "Vermouth infusé au laurier.", "prix": null },
             { "nom": "Dry Martini", "desc": "Olive de Nice ou zeste, au choix.", "prix": null },
-            { "nom": "Spritz d'ici", "desc": "Apéritif méditerranéen, agrumes de la région.", "prix": null }
+            { "nom": "Spritz d’ici", "desc": "Apéritif méditerranéen, agrumes de la région.", "prix": null }
           ]
         },
         {
           "nom": "Sans alcool",
           "plats": [
             { "nom": "Jardin", "desc": "Menthe, concombre, citron vert, tonic.", "prix": null },
-            { "nom": "Petite Afrique", "desc": "Infusion froide d'hibiscus, orange sanguine.", "prix": null }
+            { "nom": "Petite Afrique", "desc": "Infusion froide d’hibiscus, orange sanguine.", "prix": null }
           ]
         }
       ]

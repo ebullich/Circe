@@ -1,4 +1,4 @@
-import { etab, carte, menuLd, platsHtml, arche } from '../layout.js';
+import { etab, carte, menuLd, platsHtml, sommaireCarte, arche } from '../layout.js';
 const c = carte('diner');
 
 export default {
@@ -21,29 +21,28 @@ export default {
       <div>${arche('Photographie à produire — poisson entier grillé au feu')}</div>
       <div class="prose">
         <p>
-          Le dîner commence au coucher du soleil, sur la terrasse ou sous les baies de la Rotonde.
-          La carte est volontairement courte : elle suit la pêche du jour et les légumes du
-          maraîcher, et se réécrit à chaque changement de saison.
+          Le service du soir commence à 18h, du mercredi au samedi, sur la terrasse ou sous les
+          baies de la Rotonde. La carte suit la pêche du jour et les arrivages : la pièce
+          d’exception et le poisson entier sont annoncés en salle.
         </p>
         <p>
-          Les grosses pièces — poisson en croûte de sel, côte de bœuf — se partagent à deux et se
-          découpent en salle. Signalez vos allergies et régimes à la réservation : la cuisine
-          s’adapte volontiers dès lors qu’elle est prévenue.
+          Les grandes pièces — côte de bœuf Black Angus, homard bleu, carré d’agneau, plateaux de
+          fruits de mer — se partagent et se découpent en salle. Signalez vos allergies et régimes
+          à la réservation : la cuisine s’adapte volontiers dès lors qu’elle est prévenue.
         </p>
-        <p><a class="lien" href="/la-carte/cocktails/">Voir aussi la carte des cocktails</a></p>
+        <p>
+          Les prix s’entendent en euros, service compris. La pêche du jour et les pièces
+          d’exception sont annoncées en salle.
+          <a class="lien" href="/la-carte/cocktails/">Voir aussi la carte des cocktails</a>.
+        </p>
       </div>
     </div>
 
+    ${sommaireCarte(c.sections)}
+
     ${platsHtml(c.sections)}
 
-    <div class="note-travail" style="margin-top:3rem;max-width:62ch">
-      <b>Carte de démonstration</b>
-      Les intitulés ci-dessus montrent la mise en page. Ils seront remplacés par la carte réelle,
-      et les prix publiés après votre accord — ce sont deux leviers de référencement importants.
-      Tout se modifie dans un seul fichier : <code>content/carte.json</code>.
-    </div>
-
-    <div class="boutons" style="margin-top:2.5rem">
+    <div class="boutons" style="margin-top:3.5rem">
       <a class="bouton bouton--plein" href="${etab.reservation}" target="_blank" rel="noopener">Réserver une table</a>
     </div>
   </div>

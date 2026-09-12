@@ -13,7 +13,7 @@ export default {
 <section class="titre-page">
   <div class="enveloppe">
     <h1>La carte</h1>
-    <p class="plomb">Quatre lectures d’un même lieu, du déjeuner au dernier verre.</p>
+    <p class="plomb">Trois lectures d’un même lieu, du brunch au dernier verre.</p>
   </div>
 </section>
 
@@ -23,7 +23,7 @@ export default {
       <p>
         La cuisine de Jean Christiansen suit les arrivages : la carte du dîner change au fil des
         saisons et de la pêche. Le bar mène sa propre écriture, entre macérations maison et herbes
-        du jardin. Le week-end, le brunch prend la terrasse dès 11h.
+        du jardin. Le week-end, le brunch prend la terrasse de 11h à 16h.
       </p>
     </div>
     ${chapitre('I', 'Les cartes')}
@@ -31,7 +31,7 @@ export default {
       <article>
         ${arche('Photographie à produire — un plat de la carte du dîner', { classe: 'arche--haute' })}
         <h3 style="margin-top:1.75rem">Dîner</h3>
-        <p style="margin-top:0.9rem;color:var(--encre-douce)">Poissons entiers, viandes au feu, légumes du marché.</p>
+        <p style="margin-top:0.9rem;color:var(--encre-douce)">Fruits de mer, poissons crus, pièces au feu de bois, grands formats à partager.</p>
         <p style="margin-top:1.1rem"><a class="lien" href="/la-carte/diner/">Voir la carte du dîner</a></p>
       </article>
       <article>
@@ -43,7 +43,7 @@ export default {
       <article>
         ${arche('Photographie à produire — le buffet du brunch', { classe: 'arche--haute' })}
         <h3 style="margin-top:1.75rem">Brunch</h3>
-        <p style="margin-top:0.9rem;color:var(--encre-douce)">Buffet à volonté, samedi et dimanche dès 11h.</p>
+        <p style="margin-top:0.9rem;color:var(--encre-douce)">Buffet à volonté, samedi et dimanche de 11h à 16h.</p>
         <p style="margin-top:1.1rem"><a class="lien" href="/brunch-beaulieu-sur-mer/">Voir le brunch</a></p>
       </article>
     </div>
@@ -66,8 +66,8 @@ export default {
     </div>
     <div class="note-travail" style="margin-top:2.5rem;max-width:62ch">
       <b>À fournir par le restaurant</b>
-      Carte des vins et formules groupes : intitulés, appellations, millésimes et tarifs.
-      Ces pages sont prêtes à les recevoir.
+      Carte des vins et formules groupes : appellations, millésimes et tarifs. La carte du dîner
+      est en ligne, complète et avec ses prix ; ces deux pages sont prêtes à recevoir le reste.
     </div>
   </div>
 </section>

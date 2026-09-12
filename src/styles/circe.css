@@ -610,7 +610,22 @@ a:hover > .metal, .metal:hover { background-position: 82% 50%; }
 /* ---------- 9. Cartes de menu, listes, données -------------------------- */
 
 /* Ligne de carte : filets et non boîtes. Aucune ombre grise, aucun coin arrondi. */
-.carte-section { font-size: var(--t-3p); }
+.carte-bloc + .carte-bloc { margin-top: clamp(3rem, 6vw, 5rem); }
+.carte-bloc .carte-bloc + .carte-bloc { margin-top: clamp(2.25rem, 4vw, 3.25rem); }
+
+.carte-titre--2 { font-size: var(--t-3p); }
+.carte-titre--3 {
+  font-family: var(--texte);
+  font-size: var(--t-2);
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--or);
+  line-height: 1.4;
+}
+.carte-titre + .plats { margin-top: clamp(1rem, 2vw, 1.5rem); }
+.carte-titre--2 + .carte-bloc { margin-top: clamp(1.5rem, 3vw, 2.25rem); }
+.carte-titre--3 + .plats { margin-top: 0.65rem; }
 .plats { display: grid; gap: 0; max-width: 880px; }
 .plat {
   display: grid;
@@ -624,6 +639,28 @@ a:hover > .metal, .metal:hover { background-position: 82% 50%; }
 .plat__nom { font-family: var(--display); font-size: var(--t-1p); line-height: 1.25; }
 .plat__prix { font-family: var(--texte); font-weight: 300; font-size: var(--t-1); letter-spacing: 0.08em; color: var(--or); white-space: nowrap; }
 .plat__desc { grid-column: 1 / -1; font-size: var(--t-1); color: var(--encre-douce); max-width: 58ch; line-height: 1.65; }
+
+/* Sommaire d'une carte longue : des filets d'or, jamais des puces. */
+.sommaire {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.75rem;
+  padding-block: 1.35rem;
+  border-block: 1px solid var(--filet-tenu);
+  margin-block: clamp(2.5rem, 5vw, 4rem) 0;
+}
+.sommaire a {
+  font-size: var(--t-2);
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--encre-tenue);
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+  transition: color var(--vite) var(--courbe), border-color var(--vite) var(--courbe);
+}
+.sommaire a:hover { color: var(--champagne); border-bottom-color: var(--or); }
+.section--clair .sommaire a:hover, .section--clair-haut .sommaire a:hover { color: #6B5119; }
 
 /* Programme : une liste de dates, pas une grille de vignettes */
 .dates { border-top: 1px solid var(--filet-tenu); }
@@ -656,6 +693,7 @@ a:hover > .metal, .metal:hover { background-position: 82% 50%; }
 .definitions > div:last-child { border-bottom: 1px solid var(--filet-tenu); }
 .definitions dt { font-size: var(--t-2); font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; color: var(--encre-tenue); padding-top: 0.35em; }
 .definitions dd { font-size: var(--t-0); color: var(--encre); }
+.creneau { white-space: nowrap; margin-left: 0.4em; }
 @media (max-width: 34rem) { .definitions > div { grid-template-columns: 1fr; } }
 
 /* Citation / avis */

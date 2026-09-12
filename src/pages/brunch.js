@@ -2,7 +2,7 @@ import { etab, chapitre, arche, faq, faqLd } from '../layout.js';
 
 const questions = [
   { q: 'À quelle heure commence le brunch ?',
-    r: '<p>Le brunch est servi le samedi et le dimanche à partir de 11h. Les premiers services sont les plus calmes ; les tables en terrasse partent vite dès les beaux jours.</p>' },
+    r: '<p>Le brunch est servi le samedi et le dimanche, de 11h à 16h. Les premiers services sont les plus calmes ; les tables en terrasse partent vite dès les beaux jours.</p>' },
   { q: 'Le buffet est-il à volonté ?',
     r: '<p>Oui, le buffet est à volonté. Vous composez votre assiette autant de fois que vous le souhaitez, du salé au sucré.</p>' },
   { q: 'Faut-il réserver pour le brunch ?',
@@ -18,14 +18,14 @@ const questions = [
 export default {
   url: '/brunch-beaulieu-sur-mer/',
   titre: 'Brunch à Beaulieu-sur-Mer — buffet à volonté vue mer | Circé',
-  description: 'Brunch buffet à volonté chez Circé, samedi et dimanche dès 11h à Beaulieu-sur-Mer. Terrasse face au Cap-Ferrat, produits frais. Réservation conseillée.',
+  description: 'Brunch buffet à volonté chez Circé, samedi et dimanche de 11h à 16h à Beaulieu-sur-Mer. Terrasse face au Cap-Ferrat. Réservation conseillée.',
   ariane: [{ nom: 'Brunch', url: '/brunch-beaulieu-sur-mer/' }],
   ld: [faqLd(questions)],
   corps: `
 <section class="titre-page">
   <div class="enveloppe">
     <h1>Le brunch<br>de Beaulieu-sur-Mer</h1>
-    <p class="plomb">Buffet à volonté, samedi et dimanche dès 11h, face au Cap-Ferrat.</p>
+    <p class="plomb">Buffet à volonté, samedi et dimanche de 11h à 16h, face au Cap-Ferrat.</p>
   </div>
 </section>
 
@@ -42,8 +42,8 @@ export default {
       <div class="prose">
         <p>
           Le brunch de Circé n’est ni un petit-déjeuner rallongé ni un déjeuner déguisé : c’est une
-          longue table, ouverte dès 11h le samedi et le dimanche, où l’on passe deux heures sans
-          regarder l’heure. Le buffet est à volonté et se parcourt librement, du salé au sucré.
+          longue table, ouverte de 11h à 16h le samedi et le dimanche, où l’on passe deux heures
+          sans regarder l’heure. Le buffet est à volonté et se parcourt librement, du salé au sucré.
         </p>
         <p>
           Sur la terrasse, la lumière de la fin de matinée tombe sur la Baie des Fourmis et la
@@ -88,10 +88,10 @@ export default {
       </article>
     </div>
     <div class="note-travail" style="margin-top:3rem;max-width:62ch">
-      <b>À confirmer par le restaurant</b>
-      Composition exacte du buffet, tarif adulte et tarif enfant, durée du service.
-      Ces informations n’ont pas été inventées : elles seront publiées telles que vous les
-      transmettrez. Le tarif du brunch est l’un des éléments les plus recherchés sur Google.
+      <b>Tarif à transmettre</b>
+      Tarif adulte et tarif enfant du brunch, et composition exacte du buffet. « Prix brunch
+      Beaulieu-sur-Mer » est une requête à fort volume : sans le tarif, la page perd l’essentiel
+      de son intérêt. Une ligne à ajouter dans <code>content/brunch.json</code>.
     </div>
   </div>
 </section>

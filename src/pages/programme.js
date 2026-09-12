@@ -13,7 +13,7 @@ const rendezVous = [
   { quand: 'Mensuel', titre: 'Dinner Show',
     texte: 'Le dîner rencontre le spectacle vivant. Musique, performance, mise en scène de la salle : la soirée se déroule autour des tables.' },
   { quand: 'Samedi et dimanche', titre: 'Brunch buffet',
-    texte: 'Buffet à volonté dès 11h, en terrasse face à la mer. Le rendez-vous du week-end.' },
+    texte: 'Buffet à volonté de 11h à 16h, en terrasse face à la mer. Le rendez-vous du week-end.' },
   { quand: 'Au fil de la saison', titre: 'DJ sets &amp; musique live',
     texte: 'Le bar prend le relais de la table : sets en fin de soirée, formations acoustiques en début de service.' }
 ];

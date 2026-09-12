@@ -1,64 +1,96 @@
 # Contenus à valider avant mise en ligne
 
-Aucune donnée factuelle n'a été inventée. Voici ce qui manque et pourquoi cela compte.
+Aucune donnée factuelle n'a été inventée. Ce document tient le compte de ce qui est
+en ligne et de ce qui manque encore.
 
-## 1. Les horaires — bloquant
+## Réglé
 
-Le site actuel se contredit : l'accueil annonce « ouvert du jeudi au dimanche », la page
-Menus « tous les jours sauf le lundi ». Une fiche Google incohérente avec le site coûte
-des positions dans le pack local.
+### Les horaires — confirmés le 12 septembre 2026
 
-- Fichier : `content/horaires.json`
-- Tant que `"confirme": false`, **les horaires ne sont pas transmis à Google** en données
-  structurées. Mieux vaut aucune donnée qu'une donnée fausse.
-- Les horaires affichés actuellement sont une hypothèse de mise en page, signalée comme
-  telle sur la page Contact.
+| Service | Jours | Horaires |
+|---|---|---|
+| Dîner | Du mercredi au samedi | 18h00 – 00h30 |
+| Brunch | Samedi et dimanche | 11h00 – 16h00 |
+| Fermeture | Lundi et mardi | — |
 
-**À fournir :** jours d'ouverture réels, horaires de chaque service (déjeuner, dîner,
-brunch), jour de fermeture, fermeture annuelle éventuelle. Passez ensuite `"confirme"` à `true`.
+Fichier : `content/horaires.json`, avec `"confirme": true`. Ces horaires alimentent
+l'affichage, la page Contact **et** les données structurées transmises à Google.
 
-## 2. Les cartes — important pour le référencement
+> **Un point à confirmer :** le dimanche soir. La consigne reçue disait d'abord
+> « du mercredi au dimanche 18h – 00h30 », puis se corrigeait en « du mercredi au samedi ».
+> C'est la seconde version qui a été retenue : **pas de service le dimanche soir**.
+> Si le restaurant sert aussi le dimanche soir, ajouter `Sunday` au service « Dîner »
+> dans `content/horaires.json`.
 
-- Fichier : `content/carte.json`
-- Les intitulés de plats et de cocktails actuels sont des **exemples de mise en page**.
-  Ils doivent être remplacés par la carte réelle.
-- **Les prix sont volontairement vides.** Leur publication est l'un des leviers de
-  référencement les plus efficaces pour un restaurant — c'est ce que les gens cherchent —
-  et elle améliore le taux de réservation. À arbitrer.
-- Manquent aussi : la carte des vins, les menus groupes, les allergènes.
+### La carte du dîner — en ligne avec ses prix
 
-## 3. Le brunch
+69 lignes réparties en 9 sections, prix compris, sur `/la-carte/diner/`.
+Fichier : `content/carte.json`. Les prix partent en données structurées `MenuItem`/`Offer`,
+sauf les prix au poids et « Au cours », qui n'ont pas de sens pour un moteur.
 
-Composition exacte du buffet, **tarif adulte et tarif enfant**, durée du service.
-« Prix brunch Beaulieu-sur-Mer » est une requête à fort volume local : le tarif absent,
-la page perd l'essentiel de son intérêt.
+Trois corrections faites au passage sur la carte imprimée, à valider :
 
-## 4. La privatisation
+| Carte imprimée | Corrigé en | Raison |
+|---|---|---|
+| « LÉGUMES DU MARECHER » / « FARMER'S VEGETEBLS » | Légumes du maraîcher / Farmer's vegetables | Fautes d'orthographe |
+| « ARTICHAUTS POIVRADES FRITS » traduit par « Courgette flower fritters » | Fried baby artichokes | La traduction anglaise ne correspondait pas au plat français |
+| « PIMENTOS DE PADRON » | Pimientos de Padrón | Orthographe espagnole |
+
+Les intitulés anglais de toute la carte sont déjà stockés dans `content/carte.json`
+(champ `en`) : la version anglaise du site n'aura pas à les ressaisir.
+
+## Reste à fournir
+
+### 1. Le tarif du brunch — prioritaire
+
+Tarif adulte, tarif enfant, et composition exacte du buffet.
+« Prix brunch Beaulieu-sur-Mer » est une requête à fort volume local : sans le tarif,
+la page `/brunch-beaulieu-sur-mer/` perd l'essentiel de son intérêt.
+
+*Note : le tarif se trouve peut-être sur circerestaurant.com, mais l'environnement de
+travail n'a pas accès au web ouvert. Il faut le transmettre à la main.*
+
+### 2. La carte des cocktails
+
+Les cocktails actuellement affichés sur `/la-carte/cocktails/` sont des **exemples de mise
+en page**, pas la vraie carte du bar. À remplacer, avec les prix.
+Fichier : `content/carte.json`, entrée `"id": "cocktails"`.
+
+### 3. La carte des vins et les menus groupes
+
+Appellations, millésimes, tarifs, formules. Les pages sont prêtes à les recevoir.
+
+### 4. Les allergènes
+
+Obligatoires à l'affichage. À ajouter par plat dans `content/carte.json`.
+
+### 5. La privatisation
 
 Capacités exactes par espace, en configuration assise et debout. Formules et budgets
 minimum. Équipements techniques disponibles (sonorisation, vidéoprojection, piste).
 
-## 5. Le programme
+### 6. Le programme
 
 Dates réelles des soirées (Table du Chef, Candle Night, Dinner Show, DJ sets), horaires,
 tarifs, invités. Chaque date obtiendra sa propre page et son balisage `Event`, qui permet
 d'apparaître dans les résultats événementiels de Google.
 
-## 6. Le chef
+### 7. Le chef
 
 Parcours de Jean Christiansen, distinctions éventuelles, liste nominative des producteurs
 partenaires.
 
-## 7. Les mentions légales
+### 8. Les mentions légales
 
 Raison sociale, forme juridique, capital, RCS, TVA intracommunautaire, directeur de la
 publication, hébergeur. Obligatoire légalement.
 
-## 8. Questions ouvertes
+## Questions ouvertes
 
-1. Le panier Squarespace `/cart` sert-il à de la vente en ligne ? Si oui, que devient-il ?
-2. Les menus hébergés sur `preview.bookvideo.mc` : contrat en cours à respecter, ou
+1. Le dimanche soir : service ou pas ? (voir ci-dessus)
+2. Le panier Squarespace `/cart` sert-il à de la vente en ligne ? Si oui, que devient-il ?
+3. Les menus hébergés sur `preview.bookvideo.mc` : contrat en cours à respecter, ou
    abandon complet au profit des pages HTML de ce site ?
-3. Quels accès sont disponibles : registrar du domaine, DNS, Google Business Profile,
+4. Quels accès sont disponibles : registrar du domaine, DNS, Google Business Profile,
    Search Console, GA4, Meta Business, outil de newsletter ?
-4. Le logo existe-t-il en vectoriel (SVG, AI, EPS) ?
+5. Le logo existe-t-il en vectoriel (SVG, AI, EPS) ?

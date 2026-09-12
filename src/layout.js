@@ -77,7 +77,25 @@ export function restaurantLd() {
 }
 
 /* Menu / MenuSection / MenuItem, engendrés depuis content/carte.json.
-   Les prix ne partent en JSON-LD que lorsqu'ils sont réellement renseignés. */
+   Les sous-sections sont rendues récursivement. Seuls les prix numériques
+   partent en données structurées : « 80 € / 100 g » ou « Au cours » n'ont
+   pas de sens pour un moteur. */
+function sectionLd(s) {
+  const o = { '@type': 'MenuSection', name: s.nom };
+  if (s.plats && s.plats.length) {
+    o.hasMenuItem = s.plats.map((p) => {
+      const item = { '@type': 'MenuItem', name: p.nom };
+      if (p.desc) item.description = p.desc;
+      if (typeof p.prix === 'number') {
+        item.offers = { '@type': 'Offer', price: p.prix, priceCurrency: 'EUR' };
+      }
+      return item;
+    });
+  }
+  if (s.sections && s.sections.length) o.hasMenuSection = s.sections.map(sectionLd);
+  return o;
+}
+
 export function menuLd(c) {
   return {
     '@context': 'https://schema.org',
@@ -86,30 +104,45 @@ export function menuLd(c) {
     url: etab.domaine + c.url,
     inLanguage: 'fr-FR',
     provider: { '@id': etab.domaine + '/#restaurant' },
-    hasMenuSection: c.sections.map((s) => ({
-      '@type': 'MenuSection',
-      name: s.nom,
-      hasMenuItem: s.plats.map((p) => {
-        const item = { '@type': 'MenuItem', name: p.nom, description: p.desc };
-        if (p.prix != null) item.offers = { '@type': 'Offer', price: p.prix, priceCurrency: 'EUR' };
-        return item;
-      })
-    }))
+    hasMenuSection: c.sections.map(sectionLd)
   };
 }
 
-export function platsHtml(sections) {
-  return sections.map((s) => `
-    <div style="margin-top:clamp(2.5rem,5vw,4rem)">
-      <h2 class="carte-section">${e(s.nom)}</h2>
-      <div class="plats" style="margin-top:1.25rem">
-        ${s.plats.map((p) => `<article class="plat">
+/* Un prix est soit un nombre — on ajoute l'euro — soit un texte libre. */
+const prixHtml = (prix) => {
+  if (prix == null || prix === '') return '';
+  return `<span class="plat__prix">${typeof prix === 'number' ? e(prix) + ' €' : e(prix)}</span>`;
+};
+
+export const ancre = (nom) => nom
+  .toLowerCase()
+  .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+  .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+function platsBloc(plats) {
+  return `<div class="plats">
+        ${plats.map((p) => `<article class="plat">
           <span class="plat__nom">${e(p.nom)}</span>
-          ${p.prix != null ? `<span class="plat__prix">${e(p.prix)} €</span>` : ''}
-          <p class="plat__desc">${e(p.desc)}</p>
+          ${prixHtml(p.prix)}
+          ${p.desc ? `<p class="plat__desc">${e(p.desc)}</p>` : ''}
         </article>`).join('\n        ')}
-      </div>
-    </div>`).join('');
+      </div>`;
+}
+
+export function platsHtml(sections, niveau = 2) {
+  return sections.map((s) => `
+    <section class="carte-bloc"${niveau === 2 ? ` id="${ancre(s.nom)}"` : ''}>
+      <h${niveau} class="carte-titre carte-titre--${niveau}">${e(s.nom)}</h${niveau}>
+      ${s.plats && s.plats.length ? platsBloc(s.plats) : ''}
+      ${s.sections && s.sections.length ? platsHtml(s.sections, niveau + 1) : ''}
+    </section>`).join('');
+}
+
+/* Sommaire d'une carte longue : des filets d'or, pas des puces. */
+export function sommaireCarte(sections) {
+  return `<nav class="sommaire" aria-label="Sommaire de la carte">
+      ${sections.map((s) => `<a href="#${ancre(s.nom)}">${e(s.nom)}</a>`).join('\n      ')}
+    </nav>`;
 }
 
 export function filAriane(chemin) {
@@ -168,9 +201,12 @@ export function arche(legende, { classe = '', photo = true } = {}) {
     </figure>`;
 }
 
+/* 18:00 devient « 18h », 00:30 devient « 00h30 ». */
+const heure = (h) => h.replace(/:00$/, 'h').replace(':', 'h');
+
 export function horairesHtml() {
   const lignes = horaires.services.map((s) => `
-      <div><dt>${e(s.service)}</dt><dd>${e(s.libelleJours)}, ${e(s.ouvre.replace(':', 'h'))} – ${e(s.ferme.replace(':', 'h'))}</dd></div>`).join('');
+      <div><dt>${e(s.service)}</dt><dd>${e(s.libelleJours)},<span class="creneau">${e(heure(s.ouvre))} – ${e(heure(s.ferme))}</span></dd></div>`).join('');
   return `<dl class="definitions">${lignes}
       <div><dt>Fermeture</dt><dd>${e(horaires.fermeture)}</dd></div>
     </dl>`;
